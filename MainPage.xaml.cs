@@ -17,7 +17,7 @@ namespace Counter
 
         private void LoadPickerItems()
         {
-            ColorPicker.ItemsSource = new List<string> { "Lightblue", "Lightgreen", "Yellow", "Cyan" };
+            ColorPicker.ItemsSource = new List<string> { "Lightblue", "Lightgreen", "Pink", "Cyan" };
             ColorPicker.SelectedItem = ColorPicker.ItemsSource[0];
         }
 
@@ -73,7 +73,7 @@ namespace Counter
                     Name = CounterNameEntry.Text,
                     Value = initialValue,
                     Color = selectedColor,
-                    startValue = initialValue
+                    StartValue = initialValue
                 };
 
                 CounterNameEntry.Text = "";
@@ -81,10 +81,14 @@ namespace Counter
                 LoadPickerItems();
 
                 await SaveCounter(newCounter);
+            } else
+            {
+                await DisplayAlert("Error", "Please enter all proper values of your counter", "OK");
+                return;
             }
+
         }
 
-        
         private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
             var counter = (Models.Counter)((Button)sender).CommandParameter;
@@ -95,7 +99,7 @@ namespace Counter
         private async void OnResetButtonClicked(object sender, EventArgs e)
         {
             var counter = (Models.Counter)((Button)sender).CommandParameter;
-            counter.Value = counter.startValue;
+            counter.Value = counter.StartValue;
             await SaveCounter(counter);
         }
 

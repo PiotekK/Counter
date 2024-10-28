@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Counter.MainPage">
+             x:Class="Counter.MainPage"
+             BackgroundColor="White"
+             WidthRequest="500">
 
     <ScrollView>
         <StackLayout>
@@ -12,8 +14,7 @@
 
             <Entry 
                 x:Name="CounterNameEntry"
-                Placeholder="Name of your new counter"
-                HorizontalOptions="Center"/>
+                Placeholder="Name of your new counter"/>
 
             <Entry 
                 x:Name="CounterStartValueEntry"
@@ -25,8 +26,8 @@
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Lightblue</x:String>
                         <x:String>Lightgreen</x:String>
-                        <x:String>Yellow</x:String>
-                        <x:String>Red</x:String>
+                        <x:String>Pink</x:String>
+                        <x:String>Cyan</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
@@ -35,7 +36,8 @@
                 x:Name="NewCounterButton"
                 Text="Add counter"
                 Clicked="OnNewCounterClicked"
-                HorizontalOptions="Center"/>
+                BackgroundColor="Black"/>
+            
             <CollectionView
                 x:Name="CollectionViewCounters"
                 Margin="0, 20, 0, 0"
@@ -48,40 +50,44 @@
                                     x:Name="CounterName"
                                     Text="{Binding Name}"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="StartAndExpand"/>
+                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="25"/>
                                 <Label
                                     x:Name="Counter"
                                     Text="{Binding Value}"
-                                    Style="{StaticResource  SubHeadline}"
                                     VerticalTextAlignment="Center"
-                                    VerticalOptions="Start"
-                                    SemanticProperties.HeadingLevel="Level2"/>
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="25"/>
                                 <Button
                                     x:Name="MinusCounterBtn"
                                     HeightRequest="10"
                                     Text="-" 
                                     Clicked="OnMinusCounterClicked"
                                     VerticalOptions="Start" 
-                                     CommandParameter="{Binding .}"/>
+                                    BackgroundColor="Black"
+                                    CommandParameter="{Binding .}"/>
                                 <Button
                                     x:Name="PlusCounterBtn"
                                     HeightRequest="10"
                                     Text="+" 
                                     Clicked="OnPlusCounterClicked"
                                     VerticalOptions="Start"
-                                     CommandParameter="{Binding .}"/>
+                                    BackgroundColor="Black"
+                                    CommandParameter="{Binding .}"/>
                                 <Button
                                     x:Name="ResetButton"
                                     Text="Reset"
                                     Clicked="OnResetButtonClicked"
                                     VerticalOptions="Start"
-                                     CommandParameter="{Binding .}"/>
+                                    BackgroundColor="Black"
+                                    CommandParameter="{Binding .}"/>
                                 <Button
                                     x:Name="DeleteButton"
                                     Text="Delete"
                                     Clicked="OnDeleteButtonClicked"
                                     VerticalOptions="Start"
-                                     CommandParameter="{Binding .}"/>
+                                    BackgroundColor="Black"
+                                    CommandParameter="{Binding .}"/>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
