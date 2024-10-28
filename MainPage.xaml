@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.MainPage">
+
+    <ScrollView>
+        <StackLayout>
+            <Label 
+                Text="Add new counter"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry 
+                x:Name="CounterNameEntry"
+                Placeholder="Name of your new counter"
+                HorizontalOptions="Center"/>
+
+            <Entry 
+                x:Name="CounterStartValueEntry"
+                Placeholder="Initial value of your new counter"
+                Keyboard="Numeric"/>
+
+            <Picker x:Name="ColorPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Lightblue</x:String>
+                        <x:String>Lightgreen</x:String>
+                        <x:String>Yellow</x:String>
+                        <x:String>Red</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button
+                x:Name="NewCounterButton"
+                Text="Add counter"
+                Clicked="OnNewCounterClicked"
+                HorizontalOptions="Center"/>
+            <CollectionView
+                x:Name="CollectionViewCounters"
+                Margin="0, 20, 0, 0"
+                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{Binding Color}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label 
+                                    x:Name="CounterName"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="StartAndExpand"/>
+                                <Label
+                                    x:Name="Counter"
+                                    Text="{Binding Value}"
+                                    Style="{StaticResource  SubHeadline}"
+                                    VerticalTextAlignment="Center"
+                                    VerticalOptions="Start"
+                                    SemanticProperties.HeadingLevel="Level2"/>
+                                <Button
+                                    x:Name="MinusCounterBtn"
+                                    HeightRequest="10"
+                                    Text="-" 
+                                    Clicked="OnMinusCounterClicked"
+                                    VerticalOptions="Start" 
+                                     CommandParameter="{Binding .}"/>
+                                <Button
+                                    x:Name="PlusCounterBtn"
+                                    HeightRequest="10"
+                                    Text="+" 
+                                    Clicked="OnPlusCounterClicked"
+                                    VerticalOptions="Start"
+                                     CommandParameter="{Binding .}"/>
+                                <Button
+                                    x:Name="ResetButton"
+                                    Text="Reset"
+                                    Clicked="OnResetButtonClicked"
+                                    VerticalOptions="Start"
+                                     CommandParameter="{Binding .}"/>
+                                <Button
+                                    x:Name="DeleteButton"
+                                    Text="Delete"
+                                    Clicked="OnDeleteButtonClicked"
+                                    VerticalOptions="Start"
+                                     CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
